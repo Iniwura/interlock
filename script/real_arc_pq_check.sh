@@ -11,7 +11,7 @@ EXPECTED_SELECTOR="0xbf4db8ba"
 TRUE_RESULT="$(printf '0x%064x' 1)"
 FALSE_RESULT="$(printf '0x%064x' 0)"
 
-if [[ ! -x "$CAST_BIN" ]]; then
+if ! command -v "$CAST_BIN" >/dev/null 2>&1; then
     printf 'missing executable cast binary: %s\n' "$CAST_BIN" >&2
     exit 1
 fi

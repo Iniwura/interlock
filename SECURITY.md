@@ -1,23 +1,20 @@
 # Security policy
 
-Interlock is experimental infrastructure and has not received an independent security audit. Do not treat the live deployment as a production wallet or deposit more than a deliberately tiny amount while evaluating it.
+Interlock is experimental infrastructure, not an audited production wallet. V1 is live on Arc, but V2 is a separate, not-yet-deployed design.
 
-## Scope
+## Security model
 
-Security-sensitive areas include:
+A V2 payment requires both the owner wallet transaction and a valid SLH-DSA-SHA2-128s signature checked by Arc’s PQ verifier. The payment digest binds chain ID, vault address, recipient, amount, nonce, and deadline. There is no owner-only payment bypass, administrator key, upgrade path, pause escape hatch, or backend signer.
 
-- owner-only authorization and reentrancy handling in `src/InterlockVault.sol`;
-- chain, vault, recipient, amount, nonce, and deadline binding;
-- Arc PQ verifier calls and malformed-return handling;
-- PQ seed custody, key rotation, and signer isolation; and
-- the read-only frontend’s guarantee that it never handles private material.
+The delayed PQ recovery path changes only the registered PQ key. It waits 72 hours, can be canceled by the old PQ key plus the owner wallet during the delay, and requires the owner wallet plus new-key proof to activate. Activation advances the payment nonce.
 
-## Credential model
+## Credential risks
 
-The vault intentionally has no owner-only recovery path. Loss of either the owner wallet or active PQ signing credential can permanently lock funds. Compromise of both credentials permits authorized payments. Keep the wallet keystore, PQ encrypted seed, keyring passphrase, and backups in separate protected locations.
-
-Never submit private keys, PQ seeds, passphrases, keystore files, or keyring values in an issue or pull request. The public frontend must remain read-only unless a future signing design can preserve this boundary.
+- Losing either the owner wallet or the PQ credential can permanently lock funds.
+- If both credentials are compromised, an attacker can authorize payments.
+- The encrypted PQ backup is a recovery aid, not a guarantee; protect its recovery secret separately.
+- Browser extensions, the operating system, wallet software, and the user’s backup process remain in scope for compromise.
 
 ## Reporting
 
-Please open a private report with the repository maintainers before publishing a reproducible exploit. Include the affected commit, reproduction steps that do not contain secrets, and whether the issue affects the deployed contract. For urgent issues, use GitHub’s private vulnerability reporting if enabled for the repository.
+Do not include private keys, PQ seeds, passphrases, wallet keystores, keyring values, encrypted credential files, or local credential paths in an issue or pull request. For a suspected vulnerability, open a private report with the maintainers before public disclosure. Include a minimal reproduction that contains no secrets and identify whether the issue affects the live V1 contract or the un-deployed V2 branch.
