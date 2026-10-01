@@ -1,0 +1,22 @@
+# Compiler files
+cache/
+out/
+
+# Broadcast, compiler, and local deployment artifacts
+broadcast/
+
+# Docs
+docs/
+
+# Dotenv
+.env
+
+# PQ private seed material
+**/*.private-seed
+**/pq-private-seed.bin
+**/*.private-seed.gpg
+
+# Frontend dependencies and build output
+web/node_modules/
+web/dist/
+web/.vercel/
