@@ -101,7 +101,7 @@ function App() {
       {view === 'vault' && <VaultView wallet={wallet?.address} vault={vault} publicKey={pqPublicKey} amount={amount} setAmount={setAmount} busy={busy} onDeposit={onDeposit} onSetup={() => setView('setup')} />}
       {view === 'send' && <SendView vault={vault} publicKey={pqPublicKey} recipient={recipient} amount={amount} setRecipient={setRecipient} setAmount={setAmount} busy={busy} onSend={onSend} onSetup={() => setView('setup')} />}
       {view === 'security' && <SecurityView passkeyPrf={passkeyPrf} />}{view === 'home' && <LiveProof />}
-      <footer className="footer"><span>Interlock V2 · hybrid post-quantum authorization for native USDC on Arc</span><span><a href="https://github.com/Iniwuura/interlock" target="_blank" rel="noreferrer">Source ↗</a><a href={ARC_EXPLORER_URL} target="_blank" rel="noreferrer">Arc explorer ↗</a></span></footer>
+      <footer className="footer"><span>Interlock V2 · hybrid post-quantum authorization for native USDC on Arc</span><span><a href="https://github.com/Iniwuura/interlock/tree/v2-development" target="_blank" rel="noreferrer">Source ↗</a><a href={ARC_EXPLORER_URL} target="_blank" rel="noreferrer">Arc explorer ↗</a></span></footer>
     </div>
   </main>;
 }
