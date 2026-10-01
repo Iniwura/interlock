@@ -26,6 +26,8 @@ Arc exposes an onchain SLH-DSA verifier at `0x1800000000000000000000000000000000
 
 The published site is intentionally read-only. It reads the live contract over Arc JSON-RPC and never handles a private key, PQ seed, passphrase, or browser signing flow.
 
+Public read-only frontend: [`interlock-amber.vercel.app`](https://interlock-amber.vercel.app/).
+
 ## Authorization model
 
 Every payment signs a digest containing:

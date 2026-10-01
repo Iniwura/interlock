@@ -13,6 +13,7 @@ Interlock has completed a controlled Arc mainnet deployment and a tiny-value liv
 | Deployment transaction | [`0xa8c53d89a84a4f3c5fbd35a517dee3b900b8d32b17778d360c4076804295fa07`](https://explorer.arc.io/tx/0xa8c53d89a84a4f3c5fbd35a517dee3b900b8d32b17778d360c4076804295fa07) |
 | Owner | `0x7d567Fa1d5fe35737BbF045f47667e13298Ee176` |
 | Active PQ public key | `0x9537fe572feba88ee169008bfc6c8b7dd420f92884ca7a377449bfb76d401e18` |
+| Public frontend | [`interlock-amber.vercel.app`](https://interlock-amber.vercel.app/) |
 | Arc PQ verifier | `0x1800000000000000000000000000000000000004` |
 | Source SHA-256 | `def1d9be7177806abcabe65ab1277bca85e46eb52404873dbf1dad0ff3ee9d12` |
 
